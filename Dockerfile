@@ -4,6 +4,5 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 FROM tomcat:10.1-jdk17-temurin-jammy
-COPY --from=build /app/target/*.war /usr/local/tomcat/webapps/
+COPY --from=build /app/target/maven-web-application.war /var/lib/tomcat/webapps/root.war
 EXPOSE 8080
-CMD ["catalina.sh","run"]
